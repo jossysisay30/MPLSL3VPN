@@ -1,0 +1,7 @@
+{% for vrf in host.vrfs %}
+  vrf definition {{ vrf.def }}
+  rd {{ vrf.rd }}
+  address-family ipv4
+    route-target export {{ vrf.rt }}
+    route-target import {{ vrf.rt }}
+ {% endfor %}
