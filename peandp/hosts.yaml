@@ -1,0 +1,234 @@
+R4:
+  hostname: 172.16.32.188
+  groups:
+    - iosxe
+  data:
+    interfaces:
+        - name: ethernet 0/0
+          vlan: routed
+          ip:   10.139.3.2
+          mask: 255.255.255.0
+          desc: FROM R4 TO R1
+          mpls: yes
+        - name: ethernet 0/2
+          vlan: routed
+          ip:   192.168.1.10
+          mask: 255.255.255.0
+          desc: FROM R4 TO R1
+          mpls: yes
+        - name: loopback 0
+          vlan: routed
+          ip:   4.4.4.4
+          mask: 255.255.255.255
+          desc: loopback
+          mpls: no
+    ospf:
+      ospf_rid: 4.4.4.4
+      ospf_process: "1"
+      ospf_networks:
+        - ip: 10.139.2.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.3.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.4.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.5.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.6.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 4.4.4.4
+          wildcard: 0.0.0.0
+          area: "0"
+    mpls:
+       range: 400 499
+R1:
+  hostname: 172.16.32.190
+  groups:
+    - iosxe
+  data:
+    interfaces:
+        - name: ethernet 0/1
+          vlan: routed
+          ip:   10.139.3.1
+          mask: 255.255.255.0
+          desc: FROM R1 TO R4
+          mpls: yes
+        - name: ethernet 0/0
+          vlan: routed
+          ip:   10.139.4.1
+          mask: 255.255.255.0
+          desc: FROM R1 TO R2
+          mpls: yes
+        - name: loopback 0
+          vlan: routed
+          ip:   1.1.1.1
+          mask: 255.255.255.255
+          desc: loopback
+          mpls: no
+    ospf:
+      ospf_rid: 1.1.1.1
+      ospf_process: "1"
+      ospf_networks:
+        - ip: 10.139.2.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.3.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.4.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.5.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 10.139.6.0
+          wildcard: 0.0.0.255
+          area: "0"
+        - ip: 1.1.1.1
+          wildcard: 0.0.0.0
+          area: "0"
+    mpls:
+        range: 100 199
+R2:
+    hostname: 172.16.32.129
+    groups:
+      - iosxe
+    data:
+      interfaces:
+          - name: ethernet 0/0
+            vlan: routed
+            ip:   10.139.4.2
+            mask: 255.255.255.0
+            desc: FROM R2 TO R1
+            mpls: yes
+          - name: ethernet 0/1
+            vlan: routed
+            ip:   10.139.5.1
+            mask: 255.255.255.0
+            desc: FROM R2 TO R3
+            mpls: yes
+          - name: loopback 0
+            vlan: routed
+            ip:   2.2.2.2
+            mask: 255.255.255.255
+            desc: loopback
+            mpls: no
+      ospf:
+        ospf_rid: 2.2.2.2
+        ospf_process: "1"
+        ospf_networks:
+          - ip: 10.139.2.0
+            wildcard: 0.0.0.255
+            area: "0"
+          - ip: 10.139.3.0
+            wildcard: 0.0.0.255
+            area: "0"
+          - ip: 10.139.4.0
+            wildcard: 0.0.0.255
+            area: "0"
+          - ip: 10.139.5.0
+            wildcard: 0.0.0.255
+            area: "0"
+          - ip: 10.139.6.0
+            wildcard: 0.0.0.255
+            area: "0"
+          - ip: 2.2.2.2
+            wildcard: 0.0.0.0
+            area: "0"
+      mpls:
+           range: 200 299
+R3:
+      hostname: 172.16.32.189
+      groups:
+        - iosxe
+      data:
+        interfaces:
+            - name: ethernet 0/0
+              vlan: routed
+              ip:   10.139.5.2
+              mask: 255.255.255.0
+              desc: FROM R3 TO R2
+              mpls: yes
+            - name: ethernet 0/1
+              vlan: routed
+              ip:   10.139.6.1
+              mask: 255.255.255.0
+              desc: FROM R3 TO R5
+              mpls: yes
+            - name: loopback 0
+              vlan: routed
+              ip:   3.3.3.3
+              mask: 255.255.255.255
+              desc: loopback
+              mpls: no
+        ospf:
+          ospf_rid: 3.3.3.3
+          ospf_process: "1"
+          ospf_networks:
+            - ip: 10.139.2.0
+              wildcard: 0.0.0.255
+              area: "0"
+            - ip: 10.139.3.0
+              wildcard: 0.0.0.255
+              area: "0"
+            - ip: 10.139.4.0
+              wildcard: 0.0.0.255
+              area: "0"
+            - ip: 10.139.5.0
+              wildcard: 0.0.0.255
+              area: "0"
+            - ip: 10.139.6.0
+              wildcard: 0.0.0.255
+              area: "0"
+            - ip: 3.3.3.3
+              wildcard: 0.0.0.0
+              area: "0"
+        mpls:
+            range: 300 399
+R5:
+        hostname: 172.16.32.187
+        groups:
+          - iosxe
+        data:
+          interfaces:
+              - name: ethernet 0/0
+                vlan: routed
+                ip:   10.139.6.2
+                mask: 255.255.255.0
+                desc: FROM R5 TO R3
+                mpls: yes
+              - name: loopback 0
+                vlan: routed
+                ip:   5.5.5.5
+                mask: 255.255.255.255
+                desc: loopback
+                mpls: no
+          ospf:
+            ospf_rid: 5.5.5.5
+            ospf_process: "1"
+            ospf_networks:
+              - ip: 10.139.2.0
+                wildcard: 0.0.0.255
+                area: "0"
+              - ip: 10.139.3.0
+                wildcard: 0.0.0.255
+                area: "0"
+              - ip: 10.139.4.0
+                wildcard: 0.0.0.255
+                area: "0"
+              - ip: 10.139.5.0
+                wildcard: 0.0.0.255
+                area: "0"
+              - ip: 10.139.6.0
+                wildcard: 0.0.0.255
+                area: "0"
+              - ip: 5.5.5.5
+                wildcard: 0.0.0.0
+                area: "0"
+          mpls:
+             range: 500 599

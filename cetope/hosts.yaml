@@ -1,0 +1,56 @@
+R6:
+  hostname: 172.16.32.186
+  groups:
+    - iosxe
+  data:
+    interfaces:
+        - name: ethernet 0/0
+          vlan:  routed
+          ip:   192.168.1.11
+          mask: 255.255.255.0
+          desc: TO Service provider mpls
+        - name: ethernet 0/2
+          vlan: routed
+          ip:   192.168.4.13
+          mask: 255.255.255.0
+          desc: TO custmer pc
+        - name: loopback 0
+          vlan: routedlo
+          ip:   6.6.6.6
+          mask: 255.255.255.255
+          desc: loopback
+    rips:
+        - net1: 6.6.6.6
+          net2: 192.168.4.0
+          net3: 192.168.1.0
+          vrfv: 1
+          df: 192.168.1.10
+
+
+R9:
+  hostname: 172.16.32.183
+  groups:
+    - iosxe
+  data:
+    interfaces:
+        - name: ethernet 0/0
+          vlan:  routed
+          ip:   192.168.2.11
+          mask: 255.255.255.0
+          desc: To Service provider mpls
+        - name: ethernet 0/2
+          vlan:  routed
+          ip:   192.168.5.13
+          mask: 255.255.255.0
+          desc: TO custmer pc
+        - name: loopback 0
+          vlan:  routedlo
+          ip:   9.9.9.9
+          mask: 255.255.255.255
+          desc: loopback
+    rips:
+        - net1: 9.9.9.9
+          net2: 192.168.2.0
+          net3: 192.168.5.0
+          vrfv: 1
+          df: 192.168.2.10

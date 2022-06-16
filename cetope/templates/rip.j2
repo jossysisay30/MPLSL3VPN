@@ -1,0 +1,10 @@
+{% for rip in host.rips %}
+  ip route 0.0.0.0 0.0.0.0 {{ rip.df }}
+  
+  router rip
+      network {{ rip.net1 }}
+      network {{ rip.net2 }}
+      network {{ rip.net3 }}
+      no auto-summary
+      version 2
+ {% endfor %}
