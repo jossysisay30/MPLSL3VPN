@@ -1,8 +1,0 @@
-! Generated Configuration
-{% for interface in host.interfaces %}
-interface {{ interface.name }}
-  vrf forwarding {{ interface.vrfv }}
-  ip address {{ interface.ip }} {{ interface.mask }}
-  description {{ interface.desc }}
-  no shutdown
-  {% endfor %}
